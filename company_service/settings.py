@@ -7,6 +7,7 @@
 #
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #
+import os
 
 BOT_NAME = 'company_service'
 
@@ -21,8 +22,8 @@ DB_SERVER = 'MySQLdb'
 DB_CONNECT = {
     'db' : 'contribute_crawler',
     'host' : 'mysql',
-    'user' : 'admin',
-    'passwd' : 'nlp506',
+    'user' : os.getenv("DATABASE_USER"),
+    'passwd' : os.getenv("DATABASE_PASSWD")
     'charset' : 'utf8',
 }
 EXTENSIONS = {
@@ -34,10 +35,10 @@ STATSMAILER_RCPTS = [
     'windworship2@163.com',
     '258831720@qq.com'
 ]
-MAIL_FROM = 'eyesofxiezhi@outlook.com'
+MAIL_FROM = os.getenv("MAIL_USER")
 MAIL_HOST = 'smtp-mail.outlook.com'
-MAIL_USER = 'eyesofxiezhi@outlook.com'
-MAIL_PASS = 'pmnlp506'
+MAIL_USER = os.getenv("MAIL_USER")
+MAIL_PASS = os.getenv("MAIL_PASSWD")
 
 WEBSERVICE_HOST = '0.0.0.0'
 WEBSERVICE_LOGFILE = 'web.log'
